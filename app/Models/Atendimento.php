@@ -9,6 +9,11 @@ class Atendimento extends Model
 {
     use HasFactory;
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     protected $table = 'atendimentos';
     protected $primaryKey = 'id';
 
@@ -19,7 +24,7 @@ class Atendimento extends Model
      */
     protected $fillable = [
         'data_da_execucao', 
-        'ciente',
+        'cliente',
         'observacao',
         'user_id',
         'tipo_atendimento_id', 

@@ -13,11 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-
-Route::get('/dashboard','DashboardController@home')->name('home')->middleware(['auth']);
+Route::get('/dashboard', 'DashboardController@home')->name('home');
 
 Route::get('/','LoginController@getLogin')->name('login');
 Route::get('/login','LoginController@getLogin')->name('login');
 Route::post('/logar/usuario', 'LoginController@postLogin')->name('logar.usuario');
 Route::get('/logout', 'LoginController@logout')->name('logout');
+
+Route::group(['namespace' => 'Tecnico', 'prefix' => '/tecnico', 'middleware' => ['auth']], function() {
+    Route::get('/', 'TecnicoController@index')->name('dashboard.tecnico');
+    Route::post('/criar', 'TecnicoController@criarAtendimento')->name('criar.atendimento');
+});

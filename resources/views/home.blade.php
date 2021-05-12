@@ -13,91 +13,32 @@
         </div>
 
         <div class="container">
-            <div class="d-sm-flex align-items-center justify-content-between mt-4 shado py-2">
-                <div>
-                    <h4>Meus Atendimentos</h4>
+            <!-- Exibindo success -->
+            @if (Session::has('success'))
+                <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+                    <strong>{{ Session::get('success') }}</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <div>
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Novo Atendimento</button>
-                </div>
-            </div>
+            @endif
 
-            <!-- Modal Criar Atendimento-->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Criar Atendimento</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="form-group">
-                                    <label for="">Data</label>
-                                    <input type="date" class="form-control" name="data" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Cliente</label>
-                                    <input type="text" class="form-control" name="cliente" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Tipo de Atendimento</label>
-                                    <select class="form-control">
-                                        <option selected value="">Selecione o atendimento</option>
-                                        <option>Default select</option>
-                                        <option>Default select</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Observação</label>
-                                    <textarea class="form-control" name="observacao" value="Nenhuma Observação"
-                                        placeholder="Nenhuma observação" required></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Técnico</label>
-                                    <input type="text" class="form-control" name="tecnico"
-                                        value="{{Auth::user()->name}}" readonly>
-                                    <input type="hidden" name="tecnico_id" value="{{Auth::user()->id}}">
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-primary">Salvar</button>
-                        </div>
-                    </div>
+            <!-- Exibindo errors -->
+            @if (Session::has('error'))
+                <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+                    <strong>{{ Session::get('error') }}</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-            </div>
-            <!-- Fim Modal Criar Atendimento-->
+            @endif
 
-            <div class="mt-2">
-                <table class="table table-striped table-hover table-dark">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            @if (Auth::user()->role == 0)
+                @include('gestor.index')
+            @else    
+                @include('tecnico.index')
+            @endif
+            
         </div>
     </main>
 
