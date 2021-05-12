@@ -45,7 +45,7 @@
                 </div>
             @endif
 
-            <form class="mt-5" autocomplete="" name="formLogin" method="POST" action="">
+            <form class="mt-5" autocomplete="" name="formLogin" method="POST" action="{{route('logar.usuario')}}">
                 @csrf
 
                 <label class="sr-only border-primary text-dark" for="inlineFormInputGroup">E-mail</label>
@@ -66,7 +66,7 @@
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="fa fa-lock"></i></div>
                         </div>
-                    <input type="password" id="senha" name="senha" minlength="8" maxlength="25" class="form-control @error('senha') is-invalid @enderror"  value="{{ old('senha') }}" autocomplete="senha" autofocus placeholder="Senha *" required>
+                    <input type="password" id="senha" name="senha" minlength="4" maxlength="25" class="form-control @error('senha') is-invalid @enderror"  value="{{ old('senha') }}" autocomplete="senha" autofocus placeholder="Senha *" required>
                     @error('senha')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -81,5 +81,9 @@
         </div><!-- /card-container -->
     </div><!-- /container -->
 
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 </body>
 </html>
