@@ -24,3 +24,19 @@ Route::group(['namespace' => 'Tecnico', 'prefix' => '/tecnico', 'middleware' => 
     Route::get('/', 'TecnicoController@index')->name('dashboard.tecnico');
     Route::post('/criar', 'TecnicoController@criarAtendimento')->name('criar.atendimento');
 });
+
+Route::group(['namespace' => 'Gestor', 'prefix' => '/gestor', 'middleware' => ['auth']], function() {
+    Route::get('/', 'GestorController@index')->name('dashboard.gestor');
+
+    // Tipos de Atendimrnto
+    Route::get('/tipos/atendimentos', 'gestorController@getTiposAtendimentos')->name('tipos.atendimentos');
+    Route::post('/criar/tipo', 'gestorController@criarTipoAtendimento')->name('criar.tipo.atendimento');
+    Route::post('/desativar/tipo', 'gestorController@desativarTipoAtendimento')->name('desativar.tipo.atendimento');
+    Route::post('/excluir/tipo', 'gestorController@excluirTipoAtendimento')->name('excluir.tipo.atendimento');
+
+    // Técnicos
+    Route::get('/tecnicos', 'gestorController@getTecnicos')->name('tecnicos');
+    Route::post('/criar/tecnico', 'gestorController@criarTecnico')->name('criar.tecnico');
+    Route::post('/desativar/tecnico', 'gestorController@desativarTecnico')->name('desativar.tecnico');
+    Route::post('/excluir/tecnico', 'gestorController@excluirTecnico')->name('excluir.tecnico');
+});

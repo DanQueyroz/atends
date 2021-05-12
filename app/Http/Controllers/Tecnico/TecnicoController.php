@@ -67,7 +67,7 @@ class TecnicoController extends Controller
         $atendimento->save();
 
         if ($atendimento) {
-            return redirect()->back()->with('success', 'Registro feito com sucesso');
+            return redirect()->back()->with('success', 'Registro efetuado com sucesso!');
         }else{
             return redirect()->back()->with('error', 'Desculpe, não foi possível concluir a solicitação.');
         }

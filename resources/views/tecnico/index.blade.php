@@ -34,7 +34,7 @@
                         <label for="">Tipo de Atendimento</label>
                         <select class="form-control" name="tipo_de_atendimento" required>
                             <option selected value="">Selecione o atendimento</option>
-                            @foreach ($tipos_atendimento as $tipo)
+                            @foreach ($meus_atendimento as $tipo)
                                 <option value="{{$tipo->id}}">{{$tipo->nome}}</option>
                             @endforeach
                         </select>
