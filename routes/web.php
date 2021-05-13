@@ -23,6 +23,9 @@ Route::get('/logout', 'LoginController@logout')->name('logout');
 Route::group(['namespace' => 'Tecnico', 'prefix' => '/tecnico', 'middleware' => ['auth']], function() {
     Route::get('/', 'TecnicoController@index')->name('dashboard.tecnico');
     Route::post('/criar', 'TecnicoController@criarAtendimento')->name('criar.atendimento');
+    Route::get('/editar/atendimento/{id}', 'TecnicoController@atendimento')->name('atendimento');
+    Route::post('/editar/atendimento/', 'TecnicoController@editarAtendimento')->name('editar.atendimento');
+    Route::get('/excluir/atendimento/{id}', 'TecnicoController@excluirAtendimento')->name('excluir.atendimento');
 });
 
 Route::group(['namespace' => 'Gestor', 'prefix' => '/gestor', 'middleware' => ['auth']], function() {

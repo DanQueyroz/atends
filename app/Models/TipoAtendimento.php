@@ -9,6 +9,11 @@ class TipoAtendimento extends Model
 {
     use HasFactory;
 
+    public function atendimentos()
+    {
+        return $this->hasMany(Atendimento::class, 'tipo_atendimento_id', 'id');
+    }
+
     protected $table = 'tipos_atendimentos';
     protected $primaryKey = 'id';
 

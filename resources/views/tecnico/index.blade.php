@@ -69,6 +69,7 @@
                 <th scope="col">Data</th>
                 <th scope="col">Cliente</th>
                 <th scope="col">Observação</th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
@@ -78,8 +79,13 @@
                     <td>{{ date('d/m/Y', strtotime($atendimento->data_da_execucao)) }}</td>
                     <td>{{ $atendimento->cliente }}</td>
                     <td>{{ $atendimento->observacao }}</td>
+                    <td>
+                        <a class="btn btn-sm btn-primary" href="/tecnico/editar/atendimento/{{$atendimento->id}}">Editar</a>
+                        <a class="btn btn-sm btn-danger" href="/tecnico/excluir/atendimento/{{$atendimento->id}}">Excluir</a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+
 </div>

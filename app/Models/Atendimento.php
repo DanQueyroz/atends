@@ -14,6 +14,11 @@ class Atendimento extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function tipo()
+    {
+        return $this->belongsTo(TipoAtendimento::class, 'tipo_atendimento_id');
+    }
+
     protected $table = 'atendimentos';
     protected $primaryKey = 'id';
 
